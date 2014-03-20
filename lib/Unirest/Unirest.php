@@ -187,7 +187,8 @@
 								Unirest::http_build_query_for_curl($body, $postBody);
 								$url .= http_build_query($postBody);
 						}
-					
+
+						curl_setopt ($ch, CURLOPT_SAFE_UPLOAD, false); // needed to be compatible with @filename API for file uploading
 						curl_setopt ($ch, CURLOPT_URL, Unirest::encodeUrl($url));
 						curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
 						curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, true);
